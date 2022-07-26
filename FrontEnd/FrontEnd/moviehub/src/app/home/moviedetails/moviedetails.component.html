@@ -1,0 +1,33 @@
+<mat-toolbar> <img src="./../assets/img/logo3.png" style="width:150px; height:63px;">
+  <h5 style="margin-left: 400px;"> Your Best Entertainment Partner</h5>
+  <!-- <button mat-button routerLink="/" style="margin-left: 400px;">Back</button> -->
+</mat-toolbar>
+
+
+<div class="card bg-dark text-white">
+  <img src="./../assets/img/reel.jpg" class="card-img" alt="img" style="height:600px; opacity:0.6;">
+  <div class="card-img-overlay">  
+
+<div *ngFor="let m of movie">
+  <div class="container_1">
+    <img src={{m.imageUrl}}  class="img1" alt="...">
+  </div>
+  <div class="container_2">
+    <div class="box1">
+    <h2>Title: {{m.movieTitle}} </h2>
+    <p>Actor : {{m.actorName}}</p>
+    <p>Actoress : {{m.actressName}}</p>
+    <p>Director : {{m.directorName}}</p>
+    <p>Genre: {{m.genre}}</p>
+    <p>Duration: {{m.duration}}</p>
+    <p>Release Year: {{m.releaseYear}}</p>
+    <p>Certificate: {{m.certification}}</p>
+    <p class="mb-4">Language: {{m.language}}</p>
+    <button class="btn-sm btn-danger" style="margin-left:20px;" matTooltip="Add To Favorite" (click)="addToFavorite(m.movieId)"><i class="fa fa-heart"></i></button>
+    <button class="btn-sm btn-danger" style="margin-left:20px;" matTooltip="Play Movie" routerLink="/video" (click)="playMovie(m.movieId)"><i class="fa fa-play"></i></button>
+    <button class="btn-sm btn-danger" style="margin-left:20px;" matTooltip="Return to Home" routerLink=""><i class="fa fa-home"></i></button>
+  </div>
+  </div>
+</div>  
+  </div>
+  </div>  

@@ -1,0 +1,27 @@
+<mat-toolbar> <img src="./../assets/img/logo3.png" style="width:150px; height:63px;">
+    
+<button mat-button [matMenuTriggerFor]= "menu" style="margin-left: 1000px;">Admin</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/admin">Add Movie</button>
+        <button mat-menu-item routerLink="/delete">Delete movie</button>
+        <button mat-menu-item routerLink="/delete">Update movie</button>
+        <button mat-menu-item routerLink="/" (click)="logout()">Logout</button>
+      </mat-menu>
+</mat-toolbar>
+
+
+<div class="container_1">  
+    <h1 style="margin-top:10px; font-weight:bold; margin-left:30px;">MovieHub DB [ Movie: {{total}} ]</h1>
+      <div class="d-flex flex-wrap" style="margin-left:40px;">
+        <div class="d-flex flex-row" *ngFor="let m of movie">
+          <div class="card" style="width: 200px; margin-left:10px; margin-top:15px; background-color:black;">
+            <img class="card-img-top" src={{m.imageUrl}} alt="img" width="200px" height="200px">
+            <div class="card-body">
+             <h2 class="card-title mb-1" style="text-align:center; color:#fff;">{{m.movieTitle}}</h2>  
+             <p style="text-align:center;  color:#fff;">Movie Id : {{m.movieId}}</p>    
+           </div>
+          </div>
+        </div>
+      </div>
+     
+     </div> 

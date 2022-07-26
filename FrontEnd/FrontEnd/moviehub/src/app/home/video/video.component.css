@@ -1,0 +1,23 @@
+/* for mat toolbar */
+
+.mat-toolbar {
+    background: black;
+    color: #fff;
+ }
+
+ .mat-toolbar button:hover{
+   background-color: #FF8C00;
+ }
+
+.bx{
+    background-color:black; 
+    color:#fff;
+    border-radius:5px; 
+    border:5px solid goldenrod;
+    height: 45px;
+    width:600px;
+    text-align:center;
+    margin-top:5px;
+    margin-left: 250px;
+}
+

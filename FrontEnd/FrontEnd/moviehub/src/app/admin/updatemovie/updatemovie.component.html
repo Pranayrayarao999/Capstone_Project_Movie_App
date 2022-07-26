@@ -1,0 +1,88 @@
+<mat-toolbar> <img src="./../assets/img/logo3.png" style="width:150px; height:63px;">
+    <button mat-button routerLink="/adminhome" style="margin-left:900px;">Home</button>
+    <button mat-button [matMenuTriggerFor]= "menu" style="margin-left: 1000px;">Admin</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/admin">Add Movie</button>
+        <button mat-menu-item routerLink="/delete">Delete movie</button>
+        <button mat-menu-item routerLink="/" (click)="logout()">Logout</button>
+      </mat-menu>
+</mat-toolbar>
+<div class="container_1">
+  <div class="text-center">
+    <form [formGroup]="updateMovieFormGroup" (ngSubmit)="updateMovie()" style="max-width:400px; margin:auto; margin-top: 30px;">
+        <h2 class="h3 mb-4 bx" >Update movie from MovieHub</h2>
+
+        <input [readonly]="true" formControlName="movieId" class="form-control mb-3" [(ngModel)]="movieId" >
+
+        <input type="text" formControlName="movieTitle" class="form-control mb-3" placeholder="Movie Title">
+            <div *ngIf="(updateMovieFormGroup.get('movieTitle')?.touched || updateMovieFormGroup.get('movieTitle')?.dirty) && updateMovieFormGroup.get('movieTitle')?.invalid"
+                class="alert alert-danger">
+                Valid Movie Title required..!
+            </div>
+
+        <input type="text" formControlName="directorName" class="form-control mb-3" placeholder="Director Name">
+            <div *ngIf="(updateMovieFormGroup.get('directorName')?.touched || updateMovieFormGroup.get('directorName')?.dirty) && updateMovieFormGroup.get('directorName')?.invalid"
+                class="alert alert-danger">
+                Valid Director Name required..!
+            </div>
+        
+        <input type="text" formControlName="actorName" class="form-control mb-3" placeholder="Actor Name">
+            <div *ngIf="(updateMovieFormGroup.get('actorName')?.touched || updateMovieFormGroup.get('actorName')?.dirty) && updateMovieFormGroup.get('actorName')?.invalid"
+                class="alert alert-danger">
+                Valid Actor Name required..!
+            </div>    
+        
+        <input type="text" formControlName="actressName" class="form-control mb-3" placeholder="Actress Name">
+            <div *ngIf="(updateMovieFormGroup.get('actressName')?.touched || updateMovieFormGroup.get('actressName')?.dirty) && updateMovieFormGroup.get('actressName')?.invalid"
+                class="alert alert-danger">
+                Valid Actress Name required..!
+            </div>    
+        
+        <input type="text" formControlName="genre" class="form-control mb-3" placeholder="Genre">
+            <div *ngIf="(updateMovieFormGroup.get('genre')?.touched || updateMovieFormGroup.get('genre')?.dirty) && updateMovieFormGroup.get('genre')?.invalid"
+                class="alert alert-danger">
+                Valid Genre required..!
+            </div> 
+
+        <input type="text" formControlName="duration" class="form-control mb-3" placeholder="Duration">
+            <div *ngIf="(updateMovieFormGroup.get('duration')?.touched || updateMovieFormGroup.get('duration')?.dirty) && updateMovieFormGroup.get('duration')?.invalid"
+                class="alert alert-danger">
+                Valid Duration required..!
+            </div>    
+            
+        <input type="text" formControlName="releaseYear" class="form-control mb-3" placeholder="Release Year">
+            <div *ngIf="(updateMovieFormGroup.get('releaseYear')?.touched || updateMovieFormGroup.get('releaseYear')?.dirty) && updateMovieFormGroup.get('releaseYear')?.invalid"
+                class="alert alert-danger">
+                Valid Release Year required..!
+            </div> 
+
+        <input type="text" formControlName="language" class="form-control mb-3" placeholder="Language">
+            <div *ngIf="(updateMovieFormGroup.get('language')?.touched || updateMovieFormGroup.get('language')?.dirty) && updateMovieFormGroup.get('language')?.invalid"
+                class="alert alert-danger">
+                Valid Language required..!
+            </div>     
+
+        <input type="text" formControlName="certification" class="form-control mb-3" placeholder="Certification">
+            <div *ngIf="(updateMovieFormGroup.get('certification')?.touched || updateMovieFormGroup.get('certification')?.dirty) && updateMovieFormGroup.get('certification')?.invalid"
+                class="alert alert-danger">
+                Valid Certification required..!
+            </div> 
+         
+        <input type="text" formControlName="imageUrl" class="form-control mb-3" placeholder="Image Url">
+            <div *ngIf="(updateMovieFormGroup.get('imageUrl')?.touched || updateMovieFormGroup.get('imageUrl')?.dirty) && updateMovieFormGroup.get('imageUrl')?.invalid"
+                class="alert alert-danger">
+                Valid Image Url required..!
+            </div> 
+
+        <input type="text" formControlName="movieUrl" class="form-control mb-3" placeholder="Movie Url">
+            <div *ngIf="(updateMovieFormGroup.get('movieUrl')?.touched || updateMovieFormGroup.get('movieUrl')?.dirty) && updateMovieFormGroup.get('movieUrl')?.invalid"
+                class="alert alert-danger">
+                Valid Movie Url required..!
+            </div> 
+
+        <div class="mt-4">
+            <button class="btn btn-warning w-100"><b>UPDATE MOVIE</b></button><br>
+        </div>
+    </form>
+</div>
+</div>

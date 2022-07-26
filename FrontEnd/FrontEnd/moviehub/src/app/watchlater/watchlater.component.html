@@ -1,0 +1,87 @@
+<mat-toolbar> <img src="./../assets/img/logo3.png" style="width:300pz; height:63px;">
+    <button mat-button routerLink="" style="margin-left:750px;">Home</button>
+    <button mat-button routerLink="/recommendation" >Recommended</button>
+    <button mat-button [matMenuTriggerFor]="menu">Movie</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/popular">Popular</button>
+      <button mat-menu-item routerLink="/trending">Trending</button>
+    </mat-menu>
+   
+      <button mat-button [matMenuTriggerFor]="menu2">{{username}}
+        <img  src="{{user.profileUrl}}" style="width:40px; height:40px; border-radius:90px" >
+      </button>
+       <mat-menu #menu2="matMenu">
+           <button mat-menu-item routerLink="/profile">Profile</button>
+           <button mat-menu-item routerLink="/favorite">My Favorites</button>
+           <button mat-menu-item routerLink="/watchlater">Watch later</button>
+           <button mat-menu-item routerLink="" (click)="logout()">Logout</button>
+         </mat-menu>
+    </mat-toolbar>
+     
+    <div class="container_1">
+    <section class="h-70 gradient-custom-2" >
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-9 col-xl-12">
+            <div class="card">
+              <div class="rounded-top text-white d-flex flex-row" style="background-color: #E49B0F; height:200px;">
+                <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                  <img src="{{user.profileUrl}}"
+                    alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                    style="width: 150px; z-index: 1">
+                  <!-- <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                    style="z-index: 1;">
+                    Edit profile
+                  </button> -->
+                </div>
+                <div class="ms-3" style="margin-top: 130px; color:black">
+                  <h2>{{user.userName}}</h2>
+                  
+                  <button mat-raised-button style="background-color:black; color: #fff; margin-left:650px" routerLink="">Add Movies to Watchlater</button>
+                </div>
+              </div>
+              <div class="card-body p-4 text-black">
+                <h2 style="text-align:center;"><b>Watch Later Movies ({{total}})</b></h2>
+                <div class="d-flex flex-wrap" >
+                  <div class="d-flex flex-row" *ngFor="let m of movie">
+                    <div class="card" style="width: 200px; margin-left:10px; margin-top:10px; background-color:black;">
+                      <img class="card-img-top" src={{m.imageUrl}} alt="img" width="200px" height="200px">
+                      <div class="card-body">
+                       <h2 class="card-title" style="color: #fff;">{{m.movieTitle}}</h2>
+                       <p class="card-text" style="color: #fff;">Genre: {{m.genre}}</p>
+                       <p class="card-text" style="color: #fff;">Language: {{m.language}}</p>
+                       <!-- <button class="btn-sm btn-danger" style="margin-left:15px" routerLink="/login"><i class="fa fa-heart"></i></button> -->
+                       <button class="btn-sm btn-danger" style="margin-left:15px;" matTooltip="Play Movie" 
+                            (click)="playMovie(m.movieId)"><i class="fa fa-play"></i></button>
+  
+                       <button class="btn-sm btn-danger" style="margin-left:15px;" matTooltip="Remove Movie" 
+                            (click)="removeWatchLater(m.movieId)"><i class="fa fa-trash"></i></button>
+  
+                       <button class="btn-sm btn-danger " style="margin-left:15px;" matTooltip="Movie Details" routerLink="/movies" 
+                              (click)="getMovieDetails(m.movieId)"><i class="fa fa-search-plus"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+    
+  <footer>
+    <div class="container1">
+      <div class="container2">
+        <h3 class="boxh1">Developers</h3><br>
+        <h3 style="color:#fff; padding-top:40px; margin-left:30px;">Pranay Kumar | Vincy Pravin | Yaswantha Nagarjuna</h3>
+      </div>
+      <img src="./../assets/img/logo3.png" style="width:200px; height:70px; margin-left: 1100px; margin-top: -100px;">
+      <p style="color:#fff; text-align: center;"> © 2022. All Rights Reserved. NIIT. All related channel and programming
+        logos<br>are service marks of, and all
+        related programming visuals and elements are the property of, NIIT, Inc. All rights reserved.</p>
+    </div>
+  </footer>
+   

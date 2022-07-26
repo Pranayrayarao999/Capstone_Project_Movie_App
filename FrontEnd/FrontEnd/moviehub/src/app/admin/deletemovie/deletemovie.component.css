@@ -1,0 +1,34 @@
+.mat-toolbar {
+    background: black;
+    color: #fff;
+ }
+
+ .mat-toolbar button:hover{
+   background-color: #FF8C00;
+ }
+
+   /* for scroller */
+   .container_1 {
+    max-height: 600px;
+    overflow: scroll;
+  }
+
+
+  .b1{
+    margin-left: 80px;
+    margin-top:20px;
+    background-color:black;
+    color:#fff;
+   
+ }
+ 
+ .b2{
+    background-color:orange;
+    color: black;
+    margin-bottom:4px;
+ }
+ 
+ .b3{
+    background-color:orange; 
+    margin-bottom:4px;
+ }

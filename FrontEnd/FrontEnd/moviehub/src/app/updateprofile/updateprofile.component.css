@@ -1,0 +1,28 @@
+
+
+  .bx{
+    background-color:black; 
+    color:goldenrod;
+    height:40px; 
+    border-radius:5px; 
+    padding-top:5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border:5px solid goldenrod;
+    height: 50px;
+}
+
+.navbar{
+    background: black;
+    color: #fff;
+    height:68px;
+}
+.navbar button:hover{
+    background-color: #FF8C00;
+  }
+
+    /* for scroller */
+    /* .container_1 {
+      max-height: 700px;
+      overflow: scroll;
+    } */

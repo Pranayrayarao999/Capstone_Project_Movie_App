@@ -1,0 +1,53 @@
+<nav class="navbar">
+ <img src="./../assets/img/logo3.png" style="width:150px; height:60px; ">
+ <button mat-button routerLink="/profile">Back</button>
+</nav>
+
+
+
+<div class="text-center mt-1">
+<form style="max-width:400px; margin:auto; margin-top: 30px;" [formGroup]="updateFormGroup" (ngSubmit)="updateProfile()">
+    <h2 class="h3 mb-4 bx">Edit Your Profile</h2>
+       <input [readonly]="true" formControlName="emailId" class="form-control mb-3" [(ngModel)]="email" >
+            
+        <input type="text" formControlName="userName" class="form-control mb-3" placeholder="New Name">
+            <div *ngIf="(updateFormGroup.get('userName')?.touched || updateFormGroup.get('userName')?.dirty) && updateFormGroup.get('userName')?.invalid"
+                class="alert alert-danger">
+                Valid UserName required..!
+            </div>
+
+        <input type="password" formControlName="password" class="form-control mb-3" placeholder="New Password">
+            <div *ngIf="(updateFormGroup.get('password')?.touched || updateFormGroup.get('password')?.dirty) && updateFormGroup.get('password')?.invalid"
+                class="alert alert-danger">
+                Valid Password required..!
+            </div>
+        
+        <input type="text" formControlName="city" class="form-control mb-3" placeholder="New City">
+            <div *ngIf="(updateFormGroup.get('city')?.touched || updateFormGroup.get('city')?.dirty) && updateFormGroup.get('city')?.invalid"
+                class="alert alert-danger">
+                Valid City required..!
+            </div> 
+        <input type="text" formControlName="profileUrl" class="form-control mb-3" placeholder="Picture No">     
+            <div *ngIf="(updateFormGroup.get('profileUrl')?.touched || updateFormGroup.get('profileUrl')?.dirty) && updateFormGroup.get('profileUrl')?.invalid"
+                class="alert alert-danger">
+                Valid Number required..!
+            </div> 
+        <div>
+            <div class="d-flex flex-wrap">
+                <div class="d-flex flex-row"  *ngFor="let f of files" >
+                  <div class="card" style="width: 90px; margin-left:6px; margin-top:5px;">
+                    <img class="card-img-top" src={{f.url}} alt="img" width="100px" height="100px">
+                    <div class="card-body"> 
+                  <p>{{f.profileId}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        
+        <div class="mt-4"> 
+                <button class="btn btn-warning w-100" type="submit"><b>SAVA CHANGES</b></button><br>
+        </div>
+</form>
+</div>
+

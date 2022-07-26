@@ -1,0 +1,81 @@
+/* for mat toolbar */
+
+.mat-toolbar {
+    background: black;
+    color: #fff;
+ }
+
+ .mat-toolbar button:hover{
+   background-color: #FF8C00;
+ }
+
+  .box1 {
+    margin-left:12px;
+    margin-top: 10px;
+  }
+
+  /*for genre */
+  .b1{
+    background-color:black; 
+    color:#fff;
+    padding-bottom: 8px;
+  
+  }
+  .b1 button:hover{
+    background-color: #FF8C00;
+  }
+
+/* for search button */
+
+  .b3{
+    width:400px;
+    height:38px;
+    border-radius:30px;
+    margin-top: 40px;
+    border:2px black solid;
+    margin-left:px;
+    
+  }
+
+  /* for footer */
+  .footer {
+    position: fixed;
+    bottom: 0;
+  }
+  .container1{
+    height:180px;
+    background-color: black;
+
+  }
+
+  .container2{
+    border:1px solid black;
+    width: 500px;
+    height: 100px;
+    display:block;
+   
+  }
+  .boxh1{
+    border-bottom: 3px solid #FF8C00; 
+    color:#fff; 
+    padding-top:15px; 
+    margin-left:30px; 
+    position: absolute;
+  }
+
+  /* for scroller */
+  .container_1 {
+    max-height: 900px;
+    overflow: scroll;
+  }
+
+/* for movie details */
+  .card1 {
+    margin-top: 40px;
+    margin-left: 300px;
+    width: 800px;
+    height:430px;
+  }
+ 
+/* for hover */
+

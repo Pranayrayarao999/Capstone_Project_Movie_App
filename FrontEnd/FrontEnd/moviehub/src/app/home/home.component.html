@@ -1,0 +1,99 @@
+<mat-toolbar> <img src="./../assets/img/logo3.png" style="width:150px; height:63px;">
+  <div *ngIf="userRole!='ROLE_USER'">
+    <button mat-button [matMenuTriggerFor]="menu" style="margin-left:900px;">Movie</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/popular">Popular</button>
+      <button mat-menu-item routerLink="/trending">Trending</button>
+    </mat-menu>
+    <button mat-button routerLink="/login">Login</button>
+    <button mat-button routerLink="/register">Register</button>
+  </div>
+   
+    <div  *ngIf="userRole=='ROLE_USER'">
+      <button mat-button [matMenuTriggerFor]="menu" style="margin-left:800px;">Movie</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/popular">Popular</button>
+      <button mat-menu-item routerLink="/trending">Trending</button>
+    </mat-menu>
+      <button mat-button routerLink="/recommendation">Recommended</button>
+      <button mat-button [matMenuTriggerFor]="menu2">{{user.userName}}
+        <img src="{{user.profileUrl}}"
+          style="width:40px; height:40px; border-radius:90px">
+      </button>
+      <mat-menu #menu2="matMenu">
+        <button mat-menu-item routerLink="/profile">Profile</button>
+        <button mat-menu-item routerLink="/favorite">My Favorites</button>
+        <button mat-menu-item routerLink="/watchlater">Watch later</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </div>
+</mat-toolbar>
+
+<div class="card bg-dark text-white">
+  <img src="./../assets/img/reel4.jpg" class="card-img" alt="img" style="height:180px;">
+  <div class="card-img-overlay">
+    <h1 class="card-title"
+      style="text-align:center;margin-top:15px; font-size: xx-large; font-family: 'Courier New', Courier, monospace; color:black;">
+      <b>Welcome to MovieHub... Explore now...</b>
+    </h1>
+    <div>
+      <!-- <button class="btn btn-light" style="margin-left:650px;" (click)="handleClear()"><i class="fa fa-times"></i></button> -->
+      <input type="text" name="name" #searchText class="b3" placeholder="Search for Movie" style="margin-left:650px;" />
+      <button class="btn btn-dark" style="border-radius:30px; margin-left:-76px;" (click)="findMovie()">Search</button>
+
+    </div>
+  </div>
+</div>
+
+<div class="b1">
+  <button mat-button matBadge="26" class="box1" (click)="getAction(g1)">Action</button>
+  <button mat-button matBadge="10" class="box1" (click)="getAnimation(g2)">Animation</button>
+  <button mat-button matBadge="11" class="box1" (click)="getAdventure(g3)">Adventure</button>
+  <button mat-button matBadge="12" class="box1" (click)="getComedy(g4)">Comedy</button>
+  <button mat-button matBadge="5" class="box1" (click)="getCrime(g5)">Crime</button>
+  <button mat-button matBadge="4" class="box1" (click)="getFamily(g6)">Family</button>
+  <button mat-button matBadge="7" class="box1" (click)="getFantasy(g7)">Fantasy</button>
+  <button mat-button matBadge="7" class="box1" (click)="getHistory(g8)">History</button>
+  <button mat-button matBadge="11" class="box1" (click)="getHorror(g9)">Horror</button>
+  <button mat-button matBadge="3" class="box1" (click)="getMusic(g10)">Music</button>
+  <button mat-button matBadge="5" class="box1" (click)="getMystery(g11)">Mystery</button>
+  <button mat-button matBadge="7" class="box1" (click)="getRomance(g12)">Romance</button>
+  <button mat-button matBadge="7" class="box1" (click)="getThriller(g13)">Thriller</button>
+  <button mat-button matBadge="6" class="box1" (click)="getWar(g14)">War</button>
+</div>
+
+<div class="container_1">
+  <h1 style="margin-top:20px; margin-left:40px;"><b>Search Result</b></h1>
+  <div class="d-flex flex-wrap" style="margin-left:40px;">
+    <div class="d-flex flex-row" *ngFor="let m of movie">
+      <div class="card" style="width: 200px; margin-left:10px; margin-top:15px; background-color:black;">
+        <img class="card-img-top" src={{m.imageUrl}} alt="img" width="200px" height="200px">
+        <div class="card-body">
+         <h2 class="card-title mb-1" style="text-align:center; color:#fff;">{{m.movieTitle}}</h2>
+         <p class="card-text" style="text-align:center; color:#fff;">Genre: {{m.genre}}</p>   
+         <button class="btn-sm btn-danger " style="margin-left:15px;" matTooltip="Add To Favorite" 
+              (click)="addToFavorite(m.movieId)"><i class="fa fa-heart"></i></button>
+         <button class="btn-sm btn-danger " style="margin-left:15px;" matTooltip="Play Movie" 
+              (click)="playMovie(m.movieId)"><i class="fa fa-play"></i></button>
+         <button class="btn-sm btn-danger " style="margin-left:15px;" matTooltip="Movie Details" routerLink="/movies" 
+              (click)="getMovieDetails(m.movieId)"><i class="fa fa-search-plus"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<footer>
+  <div class="container1">
+    <div class="container2">
+      <h3 class="boxh1">Developers</h3><br>
+      <h3 style="color:#fff; padding-top:40px; margin-left:30px;">Pranay Kumar | Vincy Pravin | Yaswantha Nagarjuna</h3>
+    </div>
+    <img src="./../assets/img/logo3.png" style="width:200px; height:70px; margin-left: 1100px; margin-top: -100px;">
+    <p style="color:#fff; text-align: center;"> © 2022. All Rights Reserved. NIIT. All related channel and programming
+      logos<br>are service marks of, and all
+      related programming visuals and elements are the property of, NIIT, Inc. All rights reserved.</p>
+  </div>
+</footer>

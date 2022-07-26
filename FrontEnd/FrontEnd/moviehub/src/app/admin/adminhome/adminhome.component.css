@@ -1,0 +1,13 @@
+.mat-toolbar {
+    background: black;
+    color: #fff;
+ }
+
+ .mat-toolbar button:hover{
+   background-color: #FF8C00;
+ }
+   /* for scroller */
+   .container_1 {
+    max-height: 600px;
+    overflow: scroll;
+  }

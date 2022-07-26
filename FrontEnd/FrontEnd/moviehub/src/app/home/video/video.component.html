@@ -1,0 +1,16 @@
+<mat-toolbar> <img src="./../assets/img/logo3.png" style="width:150px; height:63px;">
+    <h1 class="bx" *ngFor="let m of movie" > Now Playing : {{m.movieTitle}}</h1>
+</mat-toolbar>
+
+<div *ngFor="let m of movie" >
+  
+     <video width="1250px" height="450px;" style="margin-top:10px; margin-left:50px" controls="controls" poster={{m.imageUrl}} autoplay >   
+        <source src={{m.movieUrl}}>
+    </video>
+     <br><br>
+    <button class="btn-sm btn-danger" style="margin-left:600px;" matTooltip="Add To Favorite" (click)="addToFavorite(m.movieId)"><i class="fa fa-heart"></i></button>
+    <button class="btn-sm btn-danger" style="margin-left:30px;" matTooltip="Movie Details" (click)="getMovieDetails(m.movieId)"><i class="fa fa-search-plus"></i></button> 
+    <button class="btn-sm btn-danger" style="margin-left:30px;" matTooltip="Watch Later" (click)="addToWatchList(m.movieId)"><i class="fa fa-clock-o"></i></button> 
+    <button class="btn-sm btn-danger" style="margin-left:30px;" matTooltip="Return to Home" routerLink=""><i class="fa fa-home"></i></button>
+   
+</div>

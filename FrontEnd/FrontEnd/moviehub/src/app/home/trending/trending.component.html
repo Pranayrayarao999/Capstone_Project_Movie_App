@@ -1,0 +1,80 @@
+<mat-toolbar> <img src="./../assets/img/logo3.png" style="width:150px; height:63px;">
+  <!-- <button mat-button routerLink="" style="margin-left:750px;">Home</button>
+  <button mat-button [matMenuTriggerFor]="menu" >Movie</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/popular">Popular</button>
+    <button mat-menu-item routerLink="/trending">Trending</button>
+  </mat-menu> -->
+ 
+  <div *ngIf="userRole!='ROLE_USER'">
+    <button mat-button routerLink="" style="margin-left:850px;">Home</button>
+    <button mat-button [matMenuTriggerFor]="menu" >Movie</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/popular">Popular</button>
+      <button mat-menu-item routerLink="/trending">Trending</button>
+    </mat-menu>
+    <button mat-button routerLink="/login">Login</button>
+    <button mat-button routerLink="/register">Register</button>
+  </div>
+
+  <div *ngIf="userRole=='ROLE_USER'">
+    <button mat-button routerLink="" style="margin-left:750px;">Home</button>
+    <button mat-button [matMenuTriggerFor]="menu" >Movie</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/popular">Popular</button>
+      <button mat-menu-item routerLink="/trending">Trending</button>
+    </mat-menu>
+    <button mat-button routerLink="/recommendation">Recommended</button>
+    <button mat-button [matMenuTriggerFor]="menu2">{{user.userName}}
+      <img src="{{user.profileUrl}}"
+        style="width:40px; height:40px; border-radius:90px">
+    </button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item routerLink="/profile">Profile</button>
+      <button mat-menu-item routerLink="/favorite">My Favorites</button>
+      <button mat-menu-item routerLink="/watchlater">Watch later</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<!-- <h2 class="mt-3" style="margin-left:30px;"><b>Now trending</b></h2> -->
+
+<div class="card bg-dark text-white">
+  <img src="./../assets/img/w6.jpeg" class="card-img" alt="img" style="height:200px; ">
+</div>
+<h1 style="margin-left:30px; margin-top:15px;"><b>Now Trending</b></h1>
+<div class="container_1">
+  <div class="d-flex flex-wrap" style="margin-left:40px;">
+    <div class="d-flex flex-row" *ngFor="let m of movie">
+      <div class="card" style="width: 200px; margin-left:10px; margin-top:15px; background-color:black;">
+        <img class="card-img-top" src={{m.imageUrl}} alt="img" width="200px" height="200px">
+        <div class="card-body">
+          <h2 class="card-title mb-1" style="text-align:center; color:#fff;">{{m.movieTitle}}</h2>
+          <!-- <p class="card-text" style="text-align:center;">Genre: {{m.genre}}</p> -->
+          <!-- <p class="card-text" style="text-align:center;">Language: {{m.language}}</p>
+       <p class="card-text" style="text-align:center;">Certification: {{m.certification}}</p> -->
+          <button class="btn-sm btn-danger " style="margin-left:15px;" matTooltip="Add To Favorite"
+            (click)="addToFavorite()"><i class="fa fa-heart"></i></button>
+          <button class="btn-sm btn-danger " style="margin-left:15px;" matTooltip="Play Movie"
+            (click)="playMovie(m.movieId)"><i class="fa fa-play"></i></button>
+          <button class="btn-sm btn-danger " style="margin-left:15px;" matTooltip="Movie Details" routerLink="/movie"
+            (click)="getMovieDetails(m.movieId)"><i class="fa fa-search-plus"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container1">
+    <div class="container2">
+      <h3 class="boxh1">Developers</h3><br>
+      <h3 style="color:#fff; padding-top:40px; margin-left:30px;">Pranay Kumar | Vincy Pravin | Yaswantha Nagarjuna</h3>
+    </div>
+    <img src="./../assets/img/logo3.png" style="width:200px; height:70px; margin-left: 1100px; margin-top: -100px;">
+    <p style="color:#fff; text-align: center;"> © 2022. All Rights Reserved. NIIT, All related channel and programming
+      logos<br>are service marks of, and all
+      related programming visuals and elements are the property of, NIIT, Inc. All rights reserved.</p>
+  </div>
+</footer>

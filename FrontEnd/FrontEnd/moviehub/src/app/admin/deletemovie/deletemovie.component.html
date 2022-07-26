@@ -1,0 +1,88 @@
+<mat-toolbar> <img src="./../assets/img/logo3.png" style="width:150px; height:63px;">
+  <button mat-button routerLink="/adminhome" style="margin-left:900px;">Home</button>
+
+  <button mat-button [matMenuTriggerFor]= "menu" >Admin</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/admin">Add Movie</button>
+        <button mat-menu-item routerLink="/delete">Update movie</button>
+        <button mat-menu-item routerLink="/" (click)="logout()">Logout</button>
+      </mat-menu>
+</mat-toolbar>
+
+
+<div>
+  <button mat-raised-button class="b1" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="multiCollapseExample1">Filter By Certification <b>></b></button>
+  <button mat-raised-button class="b1" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="multiCollapseExample2">Filter By Director Name <b>></b></button>
+  <button mat-raised-button class="b1" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="multiCollapseExample3">Filter By Actor Name <b>></b></button>
+  <button mat-raised-button class="b1" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="multiCollapseExample4">Filter By Language <b>></b></button>
+  <button mat-raised-button class="b1" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="multiCollapseExample5">Filter By Year <b>></b></button>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="collapse1">
+      <div class="card card-body" style="width:100px; margin-top:10px; margin-left:100px;">
+       <button mat-raised-button class="b2" (click)="findU(c1)">U</button>
+       <button mat-raised-button class="b2" (click)="findUA(c2)">U/A</button>
+       <button mat-raised-button class="b2" (click)="findA(c3)">A</button>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="collapse2">
+      <div class="card card-body" style="width:300px; margin-top:10px">
+          <input type="text" name="name" #searchText1 class="mb-2" placeholder="Director Name"/>
+          <button mat-raised-button style="background-color:orange;" (click)="findByDirectorName()">Search</button>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="collapse3">
+      <div class="card card-body" style="width:300px; margin-top:10px; ">
+        <input type="text" name="name2" #searchText2 class="mb-2" placeholder="Actor Name"/>
+        <button mat-raised-button style="background-color:orange;" (click)="findByActorName()">Search</button>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="collapse4">
+      <div class="card card-body" style="width:150px; margin-top:10px;">
+       <button mat-raised-button class="b3"(click)="findEnglish(l1)">English</button>
+       <button mat-raised-button class="b3"(click)="findHindi(l3)">Hindi</button>
+       <button mat-raised-button class="b3"(click)="findMalayalam(l5)">Malyalam</button>
+       <button mat-raised-button class="b3"(click)="findTamil(l2)">Tamil</button>
+       <button mat-raised-button class="b3"(click)="findTelugu(l4)">Telugu</button>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="collapse5">
+      <div class="card card-body" style="width:300px; margin-top:10px; ">
+        <input type="text" name="name3" #searchText3 class="mb-2" placeholder="Release Year"/>
+        <button mat-raised-button style="background-color:orange;" (click)="findByReleaseYear()">Search</button>
+      </div>
+    </div>
+  </div>
+</div>  
+
+
+
+
+<div class="container_1">  
+  <h1 style="margin-top:100px; font-weight:bold;">MovieHub DB</h1>
+    <div class="d-flex flex-wrap" style="margin-left:40px;">
+      <div class="d-flex flex-row" *ngFor="let m of movie">
+        <div class="card" style="width: 200px; margin-left:10px; margin-top:15px; background-color:black;">
+          <img class="card-img-top" src={{m.imageUrl}} alt="img" width="200px" height="200px">
+          <div class="card-body">
+           <h2 class="card-title mb-1" style="text-align:center; color:#fff;">{{m.movieTitle}}</h2>  
+           <p style="text-align:center; color:#fff;">Movie Id : {{m.movieId}}</p>
+           <button class="btn-sm btn-danger" style="margin-left:15px;" matTooltip="Delete Movie" 
+                 (click)="deleteMovie(m.movieId)">Delete</button>
+          <button class="btn-sm btn-danger" style="margin-left:10px;" matTooltip="Delete Movie" 
+                 (click)="updateMovie(m.movieId)">Update</button>      
+         </div>
+        </div>
+      </div>
+    </div>
+   
+   </div> 

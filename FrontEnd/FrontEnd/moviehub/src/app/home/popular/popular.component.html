@@ -1,0 +1,145 @@
+<mat-toolbar> <img src="./../assets/img/logo3.png" style="width:150px;; height:63px;">
+
+  <div *ngIf="userRole!='ROLE_USER'">
+    <button mat-button routerLink="" style="margin-left:850px;">Home</button>
+    <button mat-button [matMenuTriggerFor]="menu">Movie</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/popular">Popular</button>
+      <button mat-menu-item routerLink="/trending">Trending</button>
+    </mat-menu>
+    <button mat-button routerLink="/login">Login</button>
+    <button mat-button routerLink="/register">Register</button>
+  </div>
+
+  <div *ngIf="userRole=='ROLE_USER'">
+    <button mat-button routerLink="" style="margin-left:750px;">Home</button>
+    <button mat-button [matMenuTriggerFor]="menu">Movie</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/popular">Popular</button>
+      <button mat-menu-item routerLink="/trending">Trending</button>
+    </mat-menu>
+    <button mat-button routerLink="/recommendation">Recommended</button>
+    <button mat-button [matMenuTriggerFor]="menu2">{{user.userName}}
+      <img src="{{user.profileUrl}}"
+        style="width:40px; height:40px; border-radius:90px">
+    </button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item routerLink="/profile">Profile</button>
+      <button mat-menu-item routerLink="/favorite">My Favorites</button>
+      <button mat-menu-item routerLink="/watchlater">Watch later</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<!-- <h2 class="mt-3 ml-4"><b>Popular Movies</b></h2> -->
+<!-- <div class="container_2"> -->
+
+
+<!-- <img src="./../assets/img/w2.webp" style="width:1300px; height:330;"> -->
+
+<div class="card bg-dark text-white">
+  <img src="./../assets/img/w2.webp" class="card-img" alt="img" style="height:350px; opacity:0.6;">
+  <div class="card-img-overlay">
+    <div>
+      <button mat-raised-button class="b1" type="button" data-toggle="collapse" data-target="#collapse1"
+        aria-expanded="false" aria-controls="multiCollapseExample1">Filter By Certification <b>></b></button>
+      <button mat-raised-button class="b1" type="button" data-toggle="collapse" data-target="#collapse2"
+        aria-expanded="false" aria-controls="multiCollapseExample2">Filter By Director Name <b>></b></button>
+      <button mat-raised-button class="b1" type="button" data-toggle="collapse" data-target="#collapse3"
+        aria-expanded="false" aria-controls="multiCollapseExample3">Filter By Actor Name <b>></b></button>
+      <button mat-raised-button class="b1" type="button" data-toggle="collapse" data-target="#collapse4"
+        aria-expanded="false" aria-controls="multiCollapseExample4">Filter By Language <b>></b></button>
+      <button mat-raised-button class="b1" type="button" data-toggle="collapse" data-target="#collapse5"
+        aria-expanded="false" aria-controls="multiCollapseExample5">Filter By Year <b>></b></button>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="collapse multi-collapse" id="collapse1">
+          <div class="card card-body" style="width:100px; margin-top:10px; margin-left:100px;">
+            <button mat-raised-button class="b2" (click)="findU(c1)">U</button>
+            <button mat-raised-button class="b2" (click)="findUA(c2)">U/A</button>
+            <button mat-raised-button class="b2" (click)="findA(c3)">A</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="collapse multi-collapse" id="collapse2">
+          <div class="card card-body" style="width:300px; margin-top:10px">
+            <input type="text" name="name" #searchText1 class="mb-2" placeholder="Director Name" />
+            <button mat-raised-button style="background-color:orange;" (click)="findByDirectorName()">Search</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="collapse multi-collapse" id="collapse3">
+          <div class="card card-body" style="width:300px; margin-top:10px; ">
+            <input type="text" name="name2" #searchText2 class="mb-2" placeholder="Actor Name" />
+            <button mat-raised-button style="background-color:orange;" (click)="findByActorName()">Search</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="collapse multi-collapse" id="collapse4">
+          <div class="card card-body" style="width:150px; margin-top:10px;">
+            <button mat-raised-button class="b3" (click)="findEnglish(l1)">English</button>
+            <button mat-raised-button class="b3" (click)="findHindi(l3)">Hindi</button>
+            <button mat-raised-button class="b3" (click)="findMalayalam(l5)">Malyalam</button>
+            <button mat-raised-button class="b3" (click)="findTamil(l2)">Tamil</button>
+            <button mat-raised-button class="b3" (click)="findTelugu(l4)">Telugu</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="collapse multi-collapse" id="collapse5">
+          <div class="card card-body" style="width:300px; margin-top:10px; ">
+            <input type="text" name="name3" #searchText3 class="mb-2" placeholder="Release Year" />
+            <button mat-raised-button style="background-color:orange;" (click)="findByReleaseYear()">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->
+
+
+<h1 style="margin-left:30px; margin-top:15px;"><b>Popular movie</b></h1>
+<div class="container_1">
+  <div class="d-flex flex-wrap mt-3" style="margin-left:40px;">
+    <div class="d-flex flex-row" *ngFor="let m of movie">
+      <div class="card" style="width: 200px; margin-left:10px; margin-top:15px; background-color:black;">
+        <img class="card-img-top" src={{m.imageUrl}} alt="img" width="200px" height="200px">
+        <div class="card-body">
+          <h2 class="card-title mb-1" style="text-align:center; color:#fff;">{{m.movieTitle}}</h2>
+          <p class="card-text" style="text-align:center; color:#fff;">Director: {{m.directorName}}</p>
+          <p class="card-text" style="text-align:center; color:#fff;">Actor: {{m.actorName}}</p>
+          <p class="card-text" style="text-align:center; color:#fff;">Language: {{m.language}}</p>
+          <p class="card-text" style="text-align:center; color:#fff;">Certification: {{m.certification}}</p>
+          <button class="btn-sm btn-danger" style="margin-left:15px;" matTooltip="Add To Favorite"
+            (click)="addToFavorite()"><i class="fa fa-heart"></i></button>
+          <button class="btn-sm btn-danger" style="margin-left:15px;" matTooltip="Play Movie"
+            (click)="playMovie(m.movieId)"><i class="fa fa-play"></i></button>
+          <button class="btn-sm btn-danger" style="margin-left:15px;" matTooltip="Movie Details" routerLink="/movie"
+            (click)="getMovieDetails(m.movieId)"><i class="fa fa-search-plus"></i></button>
+          <!-- <button class="btn-sm btn-danger" style="margin-left:15px;" matTooltip="Movie Details" routerLink="/"><i class="fa fa-reply"></i></button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<footer>
+  <div class="container1">
+    <div class="container2">
+      <h3 class="boxh1">Developers</h3><br>
+      <h3 style="color:#fff; padding-top:40px; margin-left:30px;">Pranay Kumar | Vincy Pravin | Yaswantha Nagarjuna</h3>
+    </div>
+    <img src="./../assets/img/logo3.png" style="width:200px; height:70px; margin-left: 1100px; margin-top: -100px;">
+    <p style="color:#fff; text-align: center;"> © 2022. All Rights Reserved. NIIT, All related channel and programming
+      logos<br>are service marks of, and all
+      related programming visuals and elements are the property of, NIIT, Inc. All rights reserved.</p>
+  </div>
+</footer>

@@ -1,0 +1,47 @@
+<mat-toolbar> <img src="./../assets/img/logo3.png" style="width:150px; height:63px;">
+  <button mat-button routerLink="" style="margin-left:850px;">Home</button>
+    <button mat-button [matMenuTriggerFor]="menu" >Movie</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/popular">Popular</button>
+      <button mat-menu-item routerLink="/trending">Trending</button>
+    </mat-menu>
+    
+    <button mat-button [matMenuTriggerFor]="menu2">{{user.userName}}
+        <img  src="{{user.profileUrl}}" style="width:40px; height:40px; border-radius:90px">
+    </button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item routerLink="/profile">Profile</button>
+      <button mat-menu-item routerLink="/favorite">My Favorites</button>
+      <button mat-menu-item routerLink="/watchlater">Watch later</button>
+      <button mat-menu-item routerLink="/login" (click)="logout()">Logout</button>
+    </mat-menu>
+</mat-toolbar>
+
+<!-- <div class="card bg-dark text-white">
+  <img src="./../assets/img/recom.jpg" class="card-img" alt="img" style="height:400px; ">
+</div>
+<h1><b>Now Trending</b></h1> -->
+
+<div class="container_1">  
+    <h1 style="margin-top:20px; margin-left:40px;"><b>Recommended for you</b></h1>
+    <div class="d-flex flex-wrap" style="margin-left:40px;">
+      <div class="d-flex flex-row" *ngFor="let m of movie">
+        <div class="card" style="width: 200px; margin-left:10px; margin-top:15px; background-color:black;">
+          <img class="card-img-top" src={{m.imageUrl}} alt="img" width="200px" height="200px">
+          <div class="card-body">
+           <h2 class="card-title mb-1" style="text-align:center; color:#fff;">{{m.movieTitle}}</h2>
+           <p class="card-text" style="text-align:center; color:#fff;">Genre: {{m.genre}}</p>   
+           <button class="btn-sm btn-danger" style="margin-left:15px;" matTooltip="Add To Favorite" 
+                 (click)="addToFavorite(m.movieId)"><i class="fa fa-heart"></i></button>
+   
+           <button class="btn-sm btn-danger" style="margin-left:15px;" matTooltip="Play Movie" routerLink="/video" 
+                 (click)="playMovie(m.movieId)"><i class="fa fa-play"></i></button>
+   
+           <button class="btn-sm btn-danger" style="margin-left:15px;" matTooltip="Movie Details" 
+                 (click)="getMovieDetails(m.movieId)"><i class="fa fa-search-plus"></i></button> 
+         </div>
+        </div>
+      </div>
+    </div>
+   
+   </div> 
